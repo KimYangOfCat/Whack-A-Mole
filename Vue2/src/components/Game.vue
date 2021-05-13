@@ -27,7 +27,7 @@ export default {
   name: "Training",
   data() {
     return {
-      TRAINING: 2,
+      TRAINING: 10,
       trainingOder: [],
       clickStyle: false,
       mouseButton: {},
