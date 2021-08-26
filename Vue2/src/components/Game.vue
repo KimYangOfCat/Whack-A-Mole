@@ -1,4 +1,6 @@
 <template>
+<div>
+  <!-- <div>你好</div> -->
   <div class="float">
     <div class="bottom">
       <div
@@ -17,6 +19,7 @@
         <img src="chese.png" v-if="showChese" />
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -158,6 +161,7 @@ export default {
       });
     },
     randomOder: function () {
+      //生成一个随机顺序
       let randomOder = [];
       let randomPoint;
       do {
@@ -199,30 +203,6 @@ export default {
         this.clickSuccess = [];
       }
     },
-    oneButtonActive: async function (oder, trainingTimes) {
-      for (let i = 0; i < trainingTimes; i++) {
-        let n = i;
-        let forOder = oder();
-        if (n > 9) {
-          n %= 10;
-        }
-        for (let j = 0; j < 10; j++) {
-          this.mouseTrans(forOder[n] - 1, "appear");
-          await this.waitClick(forOder[n] - 1);
-          await delay(200 + Math.random() * 800);
-        }
-        //end
-        if (i == trainingTimes - 1) {
-          //最后一轮结束
-          await this.habitWait(true);
-        } else {
-          await this.habitWait(false);
-        }
-
-        this.nowIndex = 0;
-        this.clickSuccess = [];
-      }
-    },
     //  震动反馈
     vibrate: function () {
       if ("vibrate" in window.navigator) {
@@ -246,6 +226,7 @@ export default {
     },
   },
   mounted() {
+    //开始弹窗
     this.$swal({
       imageUrl: "ready.png",
       confirmButtonColor: "#f9a772",
